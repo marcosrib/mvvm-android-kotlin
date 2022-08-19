@@ -1,6 +1,6 @@
-package com.example.applicationestudo.rest
+package com.example.applicationestudo.data.rest
 
-import com.example.applicationestudo.models.Live
+import com.example.applicationestudo.data.models.Live
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

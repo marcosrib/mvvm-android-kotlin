@@ -1,6 +1,6 @@
-package com.example.applicationestudo.repositories
+package com.example.applicationestudo.data.repositories
 
-import com.example.applicationestudo.rest.RetrofitService
+import com.example.applicationestudo.data.rest.RetrofitService
 
 class MainRepository constructor(private val retrofitService: RetrofitService){
     fun getAllLives() = retrofitService.getAllLives();

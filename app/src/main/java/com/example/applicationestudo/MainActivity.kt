@@ -10,16 +10,17 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.applicationestudo.adapters.MainAdapter
 import com.example.applicationestudo.databinding.ActivityMainBinding
-import com.example.applicationestudo.repositories.MainRepository
-import com.example.applicationestudo.rest.RetrofitService
-import com.example.applicationestudo.viewmodel.main.MainViewModel
-import com.example.applicationestudo.viewmodel.main.MainViewModelFactory
+import com.example.applicationestudo.data.repositories.MainRepository
+import com.example.applicationestudo.data.rest.RetrofitService
+import com.example.applicationestudo.domain.usecases.GetLive
+import com.example.applicationestudo.presenter.main.MainViewModel
+import com.example.applicationestudo.presenter.main.MainViewModelFactory
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     lateinit var viewModel: MainViewModel
     private val retrofitService = RetrofitService.getInstance();
-
+    private lateinit var getLive: GetLive
     private val adapter = MainAdapter {
         openLink(it.link)
     }
@@ -30,8 +31,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        getLive = GetLive(MainRepository(retrofitService))
+
         viewModel =
-            ViewModelProvider(this, MainViewModelFactory(MainRepository(retrofitService))).get(
+            ViewModelProvider(this, MainViewModelFactory(getLive)).get(
                 MainViewModel::class.java
             )
         binding.recyclerview.adapter = adapter

@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.applicationestudo.R
 import com.example.applicationestudo.databinding.ResItemLivesBinding
-import com.example.applicationestudo.models.Live
+import com.example.applicationestudo.data.models.Live
 
 class MainAdapter(private val onItemClicked: (Live) -> Unit) : RecyclerView.Adapter<MainViewHolder>() {
 
